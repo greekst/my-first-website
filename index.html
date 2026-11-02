@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" data-theme="sunny">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fff9ed" />
+    <meta
+      name="description"
+      content="A colorful first website made to learn design, code, and publishing with Codex and GitHub."
+    />
+    <title>My First Website</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header wrap">
+      <a class="wordmark" href="#top" aria-label="My First Website, back to top">
+        <span class="wordmark-mark" aria-hidden="true">✳</span>
+        <span>firstsite<span class="wordmark-dot">.</span></span>
+      </a>
+
+      <div class="header-actions">
+        <span class="palette-label" id="palette-status" aria-live="polite">Sunny palette</span>
+        <button class="palette-button" id="palette-button" type="button">
+          <span class="button-sparkle" aria-hidden="true">✦</span>
+          Change the colors
+        </button>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero wrap" id="top" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> A tiny internet experiment</p>
+          <h1 id="hero-title">My First <span>Website<span class="title-period">.</span></span></h1>
+          <p class="hero-lede">
+            A bright little place to learn how a page goes from an idea to a real address on the internet.
+          </p>
+          <a class="explore-link" href="#how-it-works">
+            Explore the process <span aria-hidden="true">↘</span>
+          </a>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">
+          <div class="art-splash"></div>
+          <div class="art-orbit"></div>
+          <div class="art-sun"><span>hello!</span></div>
+          <div class="art-sticker">made<br />with<br />curiosity <span>↗</span></div>
+          <div class="art-star art-star-one">✳</div>
+          <div class="art-star art-star-two">✦</div>
+          <div class="art-dot art-dot-one"></div>
+          <div class="art-dot art-dot-two"></div>
+        </div>
+      </section>
+
+      <section class="journey" id="how-it-works" aria-labelledby="journey-title">
+        <div class="wrap">
+          <div class="section-intro">
+            <p class="eyebrow"><span class="eyebrow-line" aria-hidden="true"></span> The little big journey</p>
+            <h2 id="journey-title">Three steps. One live site.</h2>
+            <p>Every part of this page is an opportunity to learn something by making it.</p>
+          </div>
+
+          <div class="steps">
+            <article class="step step-design">
+              <span class="step-number">01 /</span>
+              <div class="step-icon" aria-hidden="true">◒</div>
+              <h3>Design</h3>
+              <p>Pick colors, arrange shapes, and make the page feel fun to explore.</p>
+            </article>
+
+            <article class="step step-build">
+              <span class="step-number">02 /</span>
+              <div class="step-icon" aria-hidden="true">✳</div>
+              <h3>Build</h3>
+              <p>Use HTML for content, CSS for style, and JavaScript for the color button.</p>
+            </article>
+
+            <article class="step step-publish">
+              <span class="step-number">03 /</span>
+              <div class="step-icon" aria-hidden="true">↗</div>
+              <h3>Publish</h3>
+              <p>Save the project on GitHub and give it a public home with GitHub Pages.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing wrap" aria-label="Try the color button">
+        <span class="closing-star" aria-hidden="true">✳</span>
+        <p>Small project.<br /><strong>Big first step.</strong></p>
+        <a href="#top">Back to the top <span aria-hidden="true">↑</span></a>
+      </section>
+    </main>
+
+    <footer class="site-footer wrap">
+      <p>Made while learning Codex + GitHub.</p>
+      <p>One page, lots of possibilities. <span aria-hidden="true">✦</span></p>
+    </footer>
+  </body>
+</html>
