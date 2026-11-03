@@ -1,7 +1,7 @@
 const palettes = [
-  { id: "sunny", name: "Sunny", themeColor: "#fff9ed" },
-  { id: "candy", name: "Candy", themeColor: "#fff4fa" },
-  { id: "fresh", name: "Fresh", themeColor: "#f1fcf6" },
+  { id: "garden", name: "Garden", themeColor: "#fff7e8" },
+  { id: "twilight", name: "Twilight", themeColor: "#f3f1ff" },
+  { id: "blossom", name: "Blossom", themeColor: "#fff3ee" },
 ];
 
 const button = document.querySelector("#palette-button");
@@ -59,5 +59,44 @@ for (const card of document.querySelectorAll(".step[data-step]")) {
       revealed = true;
     }
     action.textContent = "Replay";
+  }
+}
+
+// A small shift between illustration layers creates depth without a 3D library.
+const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+const hero = document.querySelector(".hero");
+
+if (hero && finePointer.matches) {
+  hero.addEventListener("pointermove", (event) => {
+    if (reducedMotion.matches) return;
+    const bounds = hero.getBoundingClientRect();
+    const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 2;
+    const y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 2;
+    hero.style.setProperty("--garden-x", `${(x * 12).toFixed(1)}px`);
+    hero.style.setProperty("--garden-y", `${(y * 8).toFixed(1)}px`);
+    hero.style.setProperty("--garden-back-x", `${(x * -3).toFixed(1)}px`);
+    hero.style.setProperty("--garden-back-y", `${(y * -2).toFixed(1)}px`);
+    hero.style.setProperty("--garden-turn", `${(x * 2).toFixed(1)}deg`);
+  });
+
+  hero.addEventListener("pointerleave", () => {
+    for (const name of ["--garden-x", "--garden-y", "--garden-back-x", "--garden-back-y", "--garden-turn"]) {
+      hero.style.removeProperty(name);
+    }
+  });
+
+  for (const card of document.querySelectorAll(".step")) {
+    card.addEventListener("pointermove", (event) => {
+      if (reducedMotion.matches) return;
+      const bounds = card.getBoundingClientRect();
+      const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+      const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+      card.style.setProperty("--card-rx", `${(-y * 5).toFixed(1)}deg`);
+      card.style.setProperty("--card-ry", `${(x * 5).toFixed(1)}deg`);
+    });
+    card.addEventListener("pointerleave", () => {
+      card.style.removeProperty("--card-rx");
+      card.style.removeProperty("--card-ry");
+    });
   }
 }
