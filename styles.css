@@ -181,7 +181,7 @@ h1 span { display: block; }
 .explore-link span, .closing a span { color: var(--primary); font-size: 1.5rem; line-height: .8; transition: transform 160ms ease; }
 .explore-link:hover span { transform: translate(3px, 3px); }
 
-.hero-art { position: relative; width: min(100%, 570px); aspect-ratio: 1; justify-self: end; }
+.hero-art { position: relative; width: min(100%, 570px); aspect-ratio: 1; justify-self: end; margin-right: 8px; }
 .art-splash {
   position: absolute;
   inset: 14% 4% 8% 11%;
@@ -270,7 +270,6 @@ h2 { margin-bottom: 0; font-size: clamp(2.6rem, 4.7vw, 5.4rem); font-weight: 900
 .step-build { background: var(--step-two); }
 .step-publish { background: var(--step-three); }
 .step-number { font-size: .8rem; font-weight: 900; letter-spacing: .08em; }
-.step-icon { margin: auto 0 15px; font-size: 2.8rem; line-height: 1; }
 .step h3 { margin-bottom: 8px; font-size: 2rem; line-height: 1; letter-spacing: -.055em; }
 .step p { max-width: 280px; margin-bottom: 0; color: var(--ink); line-height: 1.47; }
 
@@ -297,7 +296,7 @@ h2 { margin-bottom: 0; font-size: clamp(2.6rem, 4.7vw, 5.4rem); font-weight: 900
   .palette-button { min-height: 43px; padding: 8px 12px; font-size: .82rem; box-shadow: 3px 3px 0 var(--ink); }
   .hero { display: flex; flex-direction: column; align-items: stretch; padding-block: 55px 70px; gap: 28px; }
   h1 { font-size: clamp(4.2rem, 16vw, 6rem); }
-  .hero-art { width: min(100%, 430px); align-self: center; transform: none; }
+  .hero-art { width: min(calc(100% - 8px), 430px); align-self: center; margin-right: 0; transform: none; }
   .art-sun span { font-size: clamp(2.8rem, 11vw, 4.5rem); }
   .art-sticker { font-size: clamp(1.3rem, 6vw, 2.3rem); }
   .journey { padding-block: 72px 78px; }
@@ -319,4 +318,129 @@ h2 { margin-bottom: 0; font-size: clamp(2.6rem, 4.7vw, 5.4rem); font-weight: 900
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
+/* Mini-scenes keep the lesson readable and make each stage visible. */
+.step { min-height: 0; }
+.step-scene { position: relative; width: 100%; height: 112px; margin: 14px 0 18px; }
+.step > p:not(.step-lesson) { flex: 1; }
+.step-action {
+  min-height: 46px;
+  margin-top: 22px;
+  padding: 8px 17px;
+  border: 2px solid var(--ink);
+  border-radius: 13px;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 3px 4px 0 var(--ink);
+  font-weight: 900;
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+.step-action:hover { transform: translate(-2px, -2px); box-shadow: 5px 6px 0 var(--ink); }
+.step-action:active { transform: translate(2px, 2px); box-shadow: 1px 2px 0 var(--ink); }
+.step-action[hidden], .step-lesson[hidden] { display: none; }
+.step-lesson {
+  width: 100%;
+  margin: 18px 0 0 !important;
+  padding-top: 15px;
+  border-top: 2px solid currentColor;
+  font-weight: 800;
+}
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.journey-reflection {
+  max-width: 690px;
+  margin: 40px 0 0;
+  font-size: clamp(1.08rem, 1.6vw, 1.35rem);
+  line-height: 1.5;
+}
+.journey-reflection > span { color: var(--primary); margin-right: 8px; }
+
+/* Design: the same composition changes mood through color alone. */
+.design-preview {
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 138px;
+  height: 98px;
+  padding: 10px;
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  background: #fff2d4;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.design-preview-sun { position: absolute; right: 11px; top: 14px; width: 29px; height: 29px; border-radius: 50%; background: #ff9b62; }
+.design-preview-heading { display: block; width: 61px; height: 11px; margin: 12px 0 8px; border-radius: 4px; background: #813c67; }
+.design-preview-line { display: block; width: 78px; height: 5px; border-radius: 3px; background: #c7696b; }
+.design-preview-button { display: block; width: 45px; height: 14px; margin-top: 10px; border-radius: 5px; background: #f4c24c; }
+.scene-caption { position: absolute; right: 3px; bottom: 12px; font-size: .74rem; font-weight: 900; text-transform: uppercase; letter-spacing: .08em; }
+.scene-caption-after { opacity: 0; }
+.step-design.is-playing .design-preview { animation: design-mood 1.6s ease-in-out both; }
+.step-design.is-playing .design-preview-sun { animation: design-sun 1.6s ease-in-out both; }
+.step-design.is-playing .design-preview-heading { animation: design-heading 1.6s ease-in-out both; }
+.step-design.is-playing .design-preview-line { animation: design-line 1.6s ease-in-out both; }
+.step-design.is-playing .design-preview-button { animation: design-button 1.6s ease-in-out both; }
+.step-design.is-playing .scene-caption-before { animation: caption-out 1.6s ease both; }
+.step-design.is-playing .scene-caption-after { animation: caption-in 1.6s ease both; }
+.step-design.is-revealed .design-preview { background: #d9e9ff; }
+.step-design.is-revealed .design-preview-sun { background: #7b88e6; }
+.step-design.is-revealed .design-preview-heading { background: #34488b; }
+.step-design.is-revealed .design-preview-line { background: #5e7ba7; }
+.step-design.is-revealed .design-preview-button { background: #81c9c0; }
+.step-design.is-revealed .scene-caption-before { opacity: 0; }
+.step-design.is-revealed .scene-caption-after { opacity: 1; }
+@keyframes design-mood { 0%, 40% { background: #fff2d4; } 65%, 100% { background: #d9e9ff; } }
+@keyframes design-sun { 0%, 40% { background: #ff9b62; } 65%, 100% { background: #7b88e6; } }
+@keyframes design-heading { 0%, 40% { background: #813c67; } 65%, 100% { background: #34488b; } }
+@keyframes design-line { 0%, 40% { background: #c7696b; } 65%, 100% { background: #5e7ba7; } }
+@keyframes design-button { 0%, 40% { background: #f4c24c; } 65%, 100% { background: #81c9c0; } }
+@keyframes caption-out { 0%, 40% { opacity: 1; } 60%, 100% { opacity: 0; } }
+@keyframes caption-in { 0%, 40% { opacity: 0; } 60%, 100% { opacity: 1; } }
+
+/* Build: three labeled layers snap toward a tiny page. */
+.build-parts { position: absolute; left: 0; top: 8px; display: flex; flex-direction: column; gap: 5px; z-index: 1; }
+.build-part { display: grid; place-items: center; width: 62px; height: 27px; border: 2px solid var(--ink); border-radius: 7px; background: var(--paper); font-size: .69rem; font-weight: 900; box-shadow: 2px 2px 0 var(--ink); }
+.build-html { background: #ffe2ad; }
+.build-css { background: #d5caff; }
+.build-js { background: #f7ea91; }
+.build-preview { position: absolute; right: 2px; top: 6px; width: 112px; height: 98px; border: 2px solid var(--ink); border-radius: 10px; background: var(--paper); box-shadow: 3px 3px 0 var(--ink); overflow: hidden; }
+.build-preview-bar { display: block; height: 14px; border-bottom: 2px solid var(--ink); background: #e9e2fc; opacity: 0; }
+.build-preview-line { display: block; width: 46px; height: 7px; margin: 16px 0 0 12px; border-radius: 4px; background: var(--ink); opacity: 0; }
+.build-preview-shape { display: block; width: 31px; height: 31px; margin: 9px 0 0 12px; border-radius: 50%; background: var(--primary); opacity: 0; }
+.step-build.is-playing .build-html { animation: build-snap .6s .05s ease-in-out both; }
+.step-build.is-playing .build-css { animation: build-snap .6s .4s ease-in-out both; }
+.step-build.is-playing .build-js { animation: build-snap .6s .75s ease-in-out both; }
+.step-build.is-playing .build-preview { animation: build-pop 1.6s ease-in-out both; }
+.step-build.is-playing .build-preview-bar { animation: build-appear .5s .05s ease both; }
+.step-build.is-playing .build-preview-line { animation: build-appear .5s .4s ease both; }
+.step-build.is-playing .build-preview-shape { animation: build-appear .5s .75s ease both; }
+.step-build.is-revealed .build-preview-bar, .step-build.is-revealed .build-preview-line, .step-build.is-revealed .build-preview-shape { opacity: 1; }
+.step-build.is-revealed .build-preview { background: #fffefa; }
+@keyframes build-snap { 0%, 15% { transform: translateX(0); } 35%, 55% { transform: translateX(27px) scale(.94); } 85%, 100% { transform: translateX(0); } }
+@keyframes build-appear { 0%, 25% { opacity: 0; } 45%, 100% { opacity: 1; } }
+@keyframes build-pop { 0%, 50% { transform: scale(.94); } 80%, 100% { transform: scale(1); } }
+
+/* Publish: Git saves, GitHub receives, Pages serves. */
+.publish-path { display: flex; align-items: center; gap: 4px; margin-top: 15px; }
+.publish-stage { display: flex; flex-direction: column; justify-content: center; align-items: center; min-width: 53px; height: 49px; padding: 3px; border: 2px solid var(--ink); border-radius: 9px; background: var(--paper); box-shadow: 2px 2px 0 var(--ink); font-size: .7rem; font-weight: 900; line-height: 1.1; }
+.publish-stage span { display: block; margin-top: 3px; font-size: .58rem; font-weight: 800; text-transform: uppercase; }
+.publish-arrow { font-size: 1rem; font-weight: 900; }
+.publish-address { position: absolute; left: 0; bottom: 8px; font-size: .75rem; font-weight: 900; opacity: .65; }
+.step-publish.is-playing .publish-stage:nth-child(1) { animation: publish-beat .55s 0s ease both; }
+.step-publish.is-playing .publish-stage:nth-child(3) { animation: publish-beat .55s .4s ease both; }
+.step-publish.is-playing .publish-stage:nth-child(5) { animation: publish-beat .55s .8s ease both; }
+.step-publish.is-playing .publish-address { animation: address-appear 1.6s ease both; }
+.step-publish.is-revealed .publish-stage { background: #fff9d9; }
+.step-publish.is-revealed .publish-address { opacity: 1; }
+@keyframes publish-beat { 0%, 12% { transform: translateY(0); background: var(--paper); } 25%, 55% { transform: translateY(-8px); background: #fff9d9; } 72%, 100% { transform: translateY(0); background: #fff9d9; } }
+@keyframes address-appear { 0%, 72% { opacity: .15; transform: translateY(7px); } 90%, 100% { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 700px) {
+  .step-scene { max-width: 260px; }
+  .step > p:not(.step-lesson) { flex: none; }
+  .step-action { margin-top: 20px; }
+  .journey-reflection { margin-top: 35px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .step.is-playing .step-scene, .step.is-playing .step-scene * { animation: none !important; }
 }

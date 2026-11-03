@@ -17,3 +17,47 @@ button.addEventListener("click", () => {
   status.textContent = `${palette.name} palette`;
   themeColor.content = palette.themeColor;
 });
+
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const sceneDuration = 1600;
+
+for (const card of document.querySelectorAll(".step[data-step]")) {
+  const action = card.querySelector(".step-action");
+  const lesson = card.querySelector(".step-lesson");
+  const announcement = card.querySelector(".step-announcement");
+  let timer;
+  let revealed = false;
+
+  lesson.hidden = true;
+  action.hidden = false;
+
+  action.addEventListener("click", () => {
+    window.clearTimeout(timer);
+    card.classList.remove("is-playing", "is-revealed");
+
+    if (reducedMotion.matches) {
+      card.classList.add("is-revealed");
+      revealLesson();
+      return;
+    }
+
+    // Restart from the first frame, even when the button is pressed mid-scene.
+    void card.offsetWidth;
+    card.classList.add("is-playing");
+    action.textContent = "Restart";
+    timer = window.setTimeout(() => {
+      card.classList.remove("is-playing");
+      card.classList.add("is-revealed");
+      revealLesson();
+    }, sceneDuration);
+  });
+
+  function revealLesson() {
+    if (!revealed) {
+      lesson.hidden = false;
+      announcement.textContent = lesson.textContent;
+      revealed = true;
+    }
+    action.textContent = "Replay";
+  }
+}

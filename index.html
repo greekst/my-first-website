@@ -64,27 +64,67 @@
           </div>
 
           <div class="steps">
-            <article class="step step-design">
+            <article class="step step-design" data-step="design">
               <span class="step-number">01 /</span>
-              <div class="step-icon" aria-hidden="true">◒</div>
+              <div class="step-scene scene-design" aria-hidden="true">
+                <div class="design-preview">
+                  <span class="design-preview-sun"></span>
+                  <span class="design-preview-heading"></span>
+                  <span class="design-preview-line"></span>
+                  <span class="design-preview-button"></span>
+                </div>
+                <span class="scene-caption scene-caption-before">warm</span>
+                <span class="scene-caption scene-caption-after">cool</span>
+              </div>
               <h3>Design</h3>
               <p>Pick colors, arrange shapes, and make the page feel fun to explore.</p>
+              <button class="step-action" type="button" aria-controls="lesson-design" hidden>Remix design</button>
+              <p class="step-lesson" id="lesson-design">Small color choices can change the whole mood.</p>
+              <span class="sr-only step-announcement" aria-live="polite" aria-atomic="true"></span>
             </article>
 
-            <article class="step step-build">
+            <article class="step step-build" data-step="build">
               <span class="step-number">02 /</span>
-              <div class="step-icon" aria-hidden="true">✳</div>
+              <div class="step-scene scene-build" aria-hidden="true">
+                <div class="build-parts">
+                  <span class="build-part build-html">HTML</span>
+                  <span class="build-part build-css">CSS</span>
+                  <span class="build-part build-js">JS</span>
+                </div>
+                <div class="build-preview">
+                  <span class="build-preview-bar"></span>
+                  <span class="build-preview-line"></span>
+                  <span class="build-preview-shape"></span>
+                </div>
+              </div>
               <h3>Build</h3>
               <p>Use HTML for content, CSS for style, and JavaScript for the color button.</p>
+              <button class="step-action" type="button" aria-controls="lesson-build" hidden>Assemble page</button>
+              <p class="step-lesson" id="lesson-build">HTML adds structure, CSS adds style, and JavaScript adds behavior.</p>
+              <span class="sr-only step-announcement" aria-live="polite" aria-atomic="true"></span>
             </article>
 
-            <article class="step step-publish">
+            <article class="step step-publish" data-step="publish">
               <span class="step-number">03 /</span>
-              <div class="step-icon" aria-hidden="true">↗</div>
+              <div class="step-scene scene-publish" aria-hidden="true">
+                <div class="publish-path">
+                  <span class="publish-stage">Git<span>save</span></span>
+                  <span class="publish-arrow">→</span>
+                  <span class="publish-stage">GitHub<span>push</span></span>
+                  <span class="publish-arrow">→</span>
+                  <span class="publish-stage">Pages<span>live</span></span>
+                </div>
+                <span class="publish-address">greekst.github.io ↗</span>
+              </div>
               <h3>Publish</h3>
               <p>Save the project on GitHub and give it a public home with GitHub Pages.</p>
+              <button class="step-action" type="button" aria-controls="lesson-publish" hidden>Launch site</button>
+              <p class="step-lesson" id="lesson-publish">Git saves versions; GitHub Pages puts the site online.</p>
+              <span class="sr-only step-announcement" aria-live="polite" aria-atomic="true"></span>
             </article>
           </div>
+
+          <p class="journey-reflection"><span aria-hidden="true">✳</span> <strong>Your turn:</strong> What do HTML, CSS, JavaScript, Git, and GitHub Pages each do?</p>
         </div>
       </section>
 
